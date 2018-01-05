@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title></title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>Load libraries.</p>
+
+<pre><code class="r">library(dplyr)
+library(GenomicRanges)
+</code></pre>
+
+<p>Placeholder - Evan to set this dynamically in the future based on where the person is putting FusionVis.</p>
+
+<p>This is so we can read in all the annotation Rdata files.</p>
+
+<pre><code class="r">installation_dir_FusionVis &lt;- &quot;/nethome/hmgeiger/FusionViz&quot;
+</code></pre>
+
+<p>This script will accept as arguments the full path to a fusion detection program output, and arguments for genome (GRCh37/GRCh38) and program (STAR-Fusion/FusionCatcher).</p>
+
+<p>Also an output directory.</p>
+
+<p>For this documentation, I will hard code these values instead of reading in from command line.</p>
+
+<pre><code class="r">#Read in test file from subdirectory under FusionVis directory.
+#This is also where we will put the output.
+
+fusion_file &lt;- paste0(installation_dir_FusionVis,&quot;/visualize_incl_GenomicRanges_test/FusionCatcher_output_test.txt&quot;)
+fusion_program &lt;- &quot;FusionCatcher&quot;
+genome &lt;- &quot;GRCh37&quot;
+output_dir &lt;- paste0(installation_dir_FusionVis,&quot;/visualize_incl_GenomicRanges_test&quot;)
+</code></pre>
+
+<p>Load different annotation Rdata files depending on genome version specified.</p>
+
+<p>Still need to make the ones for GRCh38.</p>
+
+<pre><code class="r">if(genome == &quot;GRCh37&quot;)
+{
+load(paste0(installation_dir_FusionVis,&quot;/annotation/biomart_db_GRCh37_exons_as_data_frame.Rdata&quot;))
+load(paste0(installation_dir_FusionVis,&quot;/annotation/biomart_db_GRCh37_exons_as_GRanges.Rdata&quot;))
+load(paste0(installation_dir_FusionVis,&quot;/annotation/biomart_db_GRCh37_introns_as_GRanges.Rdata&quot;))
+load(paste0(installation_dir_FusionVis,&quot;/annotation/biomart_db_GRCh37_total_exons_per_transcript.Rdata&quot;))
+load(paste0(installation_dir_FusionVis,&quot;/annotation/biomart_db_GRCh37_rank_per_transcript.Rdata&quot;))
+load(paste0(installation_dir_FusionVis,&quot;/annotation/biomart_db_GRCh37_utrs_for_plotting.Rdata&quot;))
+}
+
+#Will eventually have similar files to read in for GRCh38.
+#For now, exit with an error if genome is GRCh38.
+
+if(genome == &quot;GRCh38&quot;)
+{
+print(&quot;Program does not currently have GRCh38 annotation available. Exiting&quot;)
+quit()
+}
+</code></pre>
+
+<p>Let&#39;s explore these annotation files a bit.</p>
+
+<p>Some are data frames, some are GRanges which are useful for quickly intersecting coordinates.</p>
+
+<pre><code class="r">#List all objects, which will show our command line arguments plus everything we just loaded from Rdata files.
+
+ls()
+</code></pre>
+
+<pre><code>##  [1] &quot;breakpoint_geneA_coords_overlapping_transcript_exons&quot;   
+##  [2] &quot;breakpoint_geneA_coords_overlapping_transcript_introns&quot; 
+##  [3] &quot;breakpoint_geneB_coords_overlapping_transcript_exons&quot;   
+##  [4] &quot;breakpoint_geneB_coords_overlapping_transcript_introns&quot; 
+##  [5] &quot;breakpoints_geneA&quot;                                      
+##  [6] &quot;breakpoints_geneA_data_frame&quot;                           
+##  [7] &quot;breakpoints_geneA_GRanges&quot;                              
+##  [8] &quot;breakpoints_geneB&quot;                                      
+##  [9] &quot;breakpoints_geneB_data_frame&quot;                           
+## [10] &quot;breakpoints_geneB_GRanges&quot;                              
+## [11] &quot;descriptions_per_fusion&quot;                                
+## [12] &quot;draw_breakpoint&quot;                                        
+## [13] &quot;exon_num_per_transcript_per_breakpoint_geneA&quot;           
+## [14] &quot;exon_num_per_transcript_per_breakpoint_geneB&quot;           
+## [15] &quot;exons_as_data_frame&quot;                                    
+## [16] &quot;exons_as_GRanges&quot;                                       
+## [17] &quot;fiveprime_utrs&quot;                                         
+## [18] &quot;fusion_file&quot;                                            
+## [19] &quot;fusion_file_main_info&quot;                                  
+## [20] &quot;fusion_file_main_info_incompatible_annotation&quot;          
+## [21] &quot;fusion_file_main_info_match_up_geneA&quot;                   
+## [22] &quot;fusion_file_main_info_match_up_geneB&quot;                   
+## [23] &quot;fusion_program&quot;                                         
+## [24] &quot;geneA_breakpoints_incompatible_annotation&quot;              
+## [25] &quot;geneA_breakpoints_overlapping_exons&quot;                    
+## [26] &quot;geneA_breakpoints_overlapping_introns_only&quot;             
+## [27] &quot;geneA_length_into_exon&quot;                                 
+## [28] &quot;geneA_matching_exon_start_middle_end&quot;                   
+## [29] &quot;geneA_new_exon_start_and_end&quot;                           
+## [30] &quot;geneA_percent_into_exon&quot;                                
+## [31] &quot;geneA_plus_geneB_names&quot;                                 
+## [32] &quot;geneA_representative_transcripts_per_breakpoint&quot;        
+## [33] &quot;geneB_breakpoints_incompatible_annotation&quot;              
+## [34] &quot;geneB_breakpoints_overlapping_exons&quot;                    
+## [35] &quot;geneB_breakpoints_overlapping_introns_only&quot;             
+## [36] &quot;geneB_length_into_exon&quot;                                 
+## [37] &quot;geneB_matching_exon_start_middle_end&quot;                   
+## [38] &quot;geneB_new_exon_start_and_end&quot;                           
+## [39] &quot;geneB_percent_into_exon&quot;                                
+## [40] &quot;geneB_representative_transcripts_per_breakpoint&quot;        
+## [41] &quot;genome&quot;                                                 
+## [42] &quot;i&quot;                                                      
+## [43] &quot;in_frame_vs_not&quot;                                        
+## [44] &quot;incompatible_annotation_rows&quot;                           
+## [45] &quot;indices_rows_where_intron_adjacent_to_exon&quot;             
+## [46] &quot;installation_dir_FusionVis&quot;                             
+## [47] &quot;intron_per_transcript_per_breakpoint_geneA&quot;             
+## [48] &quot;intron_per_transcript_per_breakpoint_geneB&quot;             
+## [49] &quot;introns_as_GRanges&quot;                                     
+## [50] &quot;introns_geneA_find_exon_before&quot;                         
+## [51] &quot;introns_geneB_find_exon_before&quot;                         
+## [52] &quot;other_info_to_possibly_display&quot;                         
+## [53] &quot;output_dir&quot;                                             
+## [54] &quot;overlaps_transcript_exon_coords_and_breakpoints_geneA&quot;  
+## [55] &quot;overlaps_transcript_exon_coords_and_breakpoints_geneB&quot;  
+## [56] &quot;overlaps_transcript_intron_coords_and_breakpoints_geneA&quot;
+## [57] &quot;overlaps_transcript_intron_coords_and_breakpoints_geneB&quot;
+## [58] &quot;plot_xmax&quot;                                              
+## [59] &quot;rank_transcripts_by_best_to_represent&quot;                  
+## [60] &quot;setup_fusion_plot&quot;                                      
+## [61] &quot;threeprime_utrs&quot;                                        
+## [62] &quot;total_exons_per_transcript&quot;                             
+## [63] &quot;transcript_exon_coords_overlapping_breakpoints_geneA&quot;   
+## [64] &quot;transcript_exon_coords_overlapping_breakpoints_geneB&quot;   
+## [65] &quot;transcript_info&quot;                                        
+## [66] &quot;transcript_intron_coords_overlapping_breakpoints_geneA&quot; 
+## [67] &quot;transcript_intron_coords_overlapping_breakpoints_geneB&quot; 
+## [68] &quot;utrs_data_frame_for_plotting&quot;
+</code></pre>
+
+<pre><code class="r">#Let&#39;s show the GRanges objects first.
+#We have one for all annotated exons and one for all annotated introns.
+
+exons_as_GRanges
+</code></pre>
+
+<pre><code>## GRanges object with 1306656 ranges and 3 metadata columns:
+##                     seqnames         ranges strand |   exon_id
+##                        &lt;Rle&gt;      &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;
+##   ENST00000456328          1 [11869, 12227]      + |         1
+##   ENST00000456328          1 [12613, 12721]      + |         8
+##   ENST00000456328          1 [13221, 14409]      + |        12
+##   ENST00000515242          1 [11872, 12227]      + |         2
+##   ENST00000515242          1 [12613, 12721]      + |         9
+##               ...        ...            ...    ... .       ...
+##   ENST00000476361 GL000243.1 [ 8050,  8132]      + |    738005
+##   ENST00000580872 GL000247.1 [10271, 10353]      - |    738006
+##   ENST00000459271 GL000247.1 [11746, 11828]      - |    738007
+##   ENST00000458778 GL000247.1 [11986, 12067]      - |    738008
+##   ENST00000606635 GL000247.1 [12803, 12884]      - |    738009
+##                         exon_name exon_rank
+##                       &lt;character&gt; &lt;integer&gt;
+##   ENST00000456328 ENSE00002234944         1
+##   ENST00000456328 ENSE00003582793         2
+##   ENST00000456328 ENSE00002312635         3
+##   ENST00000515242 ENSE00002234632         1
+##   ENST00000515242 ENSE00003608237         2
+##               ...             ...       ...
+##   ENST00000476361 ENSE00001877993         1
+##   ENST00000580872 ENSE00002691431         1
+##   ENST00000459271 ENSE00001814171         1
+##   ENST00000458778 ENSE00001807025         1
+##   ENST00000606635 ENSE00003700638         1
+##   -------
+##   seqinfo: 297 sequences (1 circular) from an unspecified genome
+</code></pre>
+
+<pre><code class="r">introns_as_GRanges
+</code></pre>
+
+<pre><code>## GRanges object with 1091486 ranges and 0 metadata columns:
+##                     seqnames         ranges strand
+##                        &lt;Rle&gt;      &lt;IRanges&gt;  &lt;Rle&gt;
+##   ENST00000456328          1 [12228, 12612]      +
+##   ENST00000456328          1 [12722, 13220]      +
+##   ENST00000515242          1 [12228, 12612]      +
+##   ENST00000515242          1 [12722, 13224]      +
+##   ENST00000518655          1 [12228, 12594]      +
+##               ...        ...            ...    ...
+##   ENST00000368515 GL000228.1 [31738, 31995]      -
+##   ENST00000602027 GL000237.1 [ 1004,  2472]      -
+##   ENST00000507732 GL000242.1 [14377, 17444]      +
+##   ENST00000507732 GL000242.1 [17533, 23600]      +
+##   ENST00000507732 GL000242.1 [26367, 34083]      +
+##   -------
+##   seqinfo: 297 sequences (1 circular) from an unspecified genome
+</code></pre>
+
+<pre><code class="r">#Next, show the exons data frame.
+
+head(exons_as_data_frame)
+</code></pre>
+
+<pre><code>##            TXNAME  CDSSTART    CDSEND EXONCHROM EXONSTRAND EXONSTART
+## 1 ENST00000000233 127228553 127228619         7          + 127228399
+## 2 ENST00000000233 127229137 127229217         7          + 127229137
+## 3 ENST00000000233 127229539 127229648         7          + 127229539
+## 4 ENST00000000233 127230120 127230191         7          + 127230120
+## 5 ENST00000000233 127231017 127231142         7          + 127231017
+## 6 ENST00000000233 127231267 127231353         7          + 127231267
+##     EXONEND EXONRANK CDSLENGTH EXONLENGTH
+## 1 127228619        1        67        221
+## 2 127229217        2        81         81
+## 3 127229648        3       110        110
+## 4 127230191        4        72         72
+## 5 127231142        5       126        126
+## 6 127231759        6        87        493
+</code></pre>
+
+<pre><code class="r">head(exons_as_data_frame[which(exons_as_data_frame$EXONSTRAND == &quot;-&quot;),])
+</code></pre>
+
+<pre><code>##             TXNAME CDSSTART  CDSEND EXONCHROM EXONSTRAND EXONSTART EXONEND
+## 7  ENST00000000412  9095012 9095138        12          -   9095012 9095138
+## 8  ENST00000000412  9098825 9099000        12          -   9098825 9099001
+## 9  ENST00000000412  9098014 9098180        12          -   9098014 9098180
+## 10 ENST00000000412       NA      NA        12          -   9102084 9102551
+## 11 ENST00000000412  9096397 9096506        12          -   9096397 9096506
+## 12 ENST00000000412  9096001 9096131        12          -   9096001 9096131
+##    EXONRANK CDSLENGTH EXONLENGTH
+## 7         6       127        127
+## 8         2       176        177
+## 9         3       167        167
+## 10        1        NA        468
+## 11        4       110        110
+## 12        5       131        131
+</code></pre>
+
+<pre><code class="r">dim(exons_as_data_frame)
+</code></pre>
+
+<pre><code>## [1] 1306656      10
+</code></pre>
+
+<pre><code class="r">length(unique(exons_as_data_frame$TXNAME))
+</code></pre>
+
+<pre><code>## [1] 215170
+</code></pre>
+
+<pre><code class="r">#What about the transcript info file?
+
+head(transcript_info)
+</code></pre>
+
+<pre><code>##                 external_gene_name ensembl_transcript_id
+## ENST00000589042                TTN       ENST00000589042
+## ENST00000591111                TTN       ENST00000591111
+## ENST00000342992                TTN       ENST00000342992
+## ENST00000342175                TTN       ENST00000342175
+## ENST00000359218                TTN       ENST00000359218
+## ENST00000460472                TTN       ENST00000460472
+##                 transcript_biotype cds_length transcript_length coding
+## ENST00000589042     protein_coding     107976            109224      1
+## ENST00000591111     protein_coding     103053            104301      1
+## ENST00000342992     protein_coding     100272            101518      1
+## ENST00000342175     protein_coding      81357             82605      1
+## ENST00000359218     protein_coding      81156             82404      1
+## ENST00000460472     protein_coding      80781             82029      1
+</code></pre>
+
+<pre><code class="r">dim(transcript_info)
+</code></pre>
+
+<pre><code>## [1] 215170      6
+</code></pre>
+
+<pre><code class="r">#Related - a simple two column file giving the total number of exons per transcript (should probably combine this with transcript_info).
+
+head(total_exons_per_transcript)
+</code></pre>
+
+<pre><code>##            TXNAME TotalExonNum
+## 1 ENST00000000233            6
+## 2 ENST00000000412            7
+## 3 ENST00000000442            7
+## 4 ENST00000001008           10
+## 5 ENST00000001146            6
+## 6 ENST00000002125           10
+</code></pre>
+
+<pre><code class="r">dim(total_exons_per_transcript)
+</code></pre>
+
+<pre><code>## [1] 215170      2
+</code></pre>
+
+<pre><code class="r">#Finally, we have a file which for all transcripts that have UTR(s), shows in which exons those UTRs fall, and how far into the exon they are if the boundaries are not right at the start or end of the exon.
+
+head(utrs_data_frame_for_plotting)
+</code></pre>
+
+<pre><code>##   Breakpoint      Transcript ExonicOrNot ExonInOrBefore TotalExonNum
+## 1  127228552 ENST00000000233         yes              1            6
+## 2  127231354 ENST00000000233         yes              6            6
+## 3    9099001 ENST00000000412         yes              2            7
+## 4    9094413 ENST00000000412         yes              7            7
+## 5   64074651 ENST00000000442         yes              2            7
+## 6   64083439 ENST00000000442         yes              7            7
+##   StartMiddleEnd LengthIntoExon PercentIntoExon
+## 1         Middle            154       69.683258
+## 2         Middle             88       17.849899
+## 3          Start             NA              NA
+## 4         Middle            124        7.868020
+## 5         Middle             12        3.560831
+## 6         Middle            261       25.290698
+</code></pre>
+
+<pre><code class="r">dim(utrs_data_frame_for_plotting)
+</code></pre>
+
+<pre><code>## [1] 167321      8
+</code></pre>
+
+<pre><code class="r">length(unique(utrs_data_frame_for_plotting$Transcript))
+</code></pre>
+
+<pre><code>## [1] 99869
+</code></pre>
+
+<p>Now, let&#39;s read in the fusion program output.</p>
+
+<p>Both FusionCatcher and STAR-Fusion will be read in the same way.</p>
+
+<pre><code class="r">fusion_file &lt;- read.table(fusion_file,header=TRUE,sep=&quot;\t&quot;,comment.char=&quot;&quot;,quote=&quot;&quot;,check.names=FALSE,stringsAsFactors=FALSE)
+</code></pre>
+
+<p>If FusionCatcher, breakpoints are called &ldquo;Fusion_point_for_gene_1(5end_fusion_partner)&rdquo; and &ldquo;Fusion_point_for_gene_2(3end_fusion_partner)&rdquo;.</p>
+
+<p>If STAR-Fusion, breakpoints are called &ldquo;LeftBreakpoint&rdquo; and &ldquo;RightBreakpoint&rdquo;.</p>
+
+<p>Both are in format chr:breakpoint:strand.</p>
+
+<p>Fusioncatcher geneA and geneB are called &ldquo;Gene_1_symbol(5end_fusion_partner)&rdquo; and &ldquo;Gene_2_symbol(3end_fusion_partner)&rdquo;.</p>
+
+<p>STAR-Fusion field &ldquo;#FusionName&rdquo; = GeneA&ndash;GeneB.</p>
+
+<p>Fusioncatcher is unique in having another field that is per gene combination called &ldquo;description&rdquo;, that tells whether the fusion is normally found in healthy or cancer samples, etc.</p>
+
+<p>Then, both programs have a few fields that are specific to each breakpoint combination, rather than each gene combination.</p>
+
+<p>FusionCatcher: &ldquo;Spanning_pairs&rdquo;,&ldquo;Spanning_unique_reads&rdquo;,&ldquo;Predicted_effect&rdquo;</p>
+
+<p>STAR-Fusion: &ldquo;JunctionReadCount&rdquo;,&ldquo;SpanningFragCount&rdquo;,&ldquo;SpliceType&rdquo;</p>
+
+<pre><code class="r">if(fusion_program == &quot;FusionCatcher&quot;)
+{
+breakpoints_geneA &lt;- fusion_file[,&quot;Fusion_point_for_gene_1(5end_fusion_partner)&quot;]
+breakpoints_geneB &lt;- fusion_file[,&quot;Fusion_point_for_gene_2(3end_fusion_partner)&quot;]
+geneA_plus_geneB_names &lt;- paste0(fusion_file[,&quot;Gene_1_symbol(5end_fusion_partner)&quot;],&quot;--&quot;,fusion_file[,&quot;Gene_2_symbol(3end_fusion_partner)&quot;])
+in_frame_vs_not &lt;- rep(&quot;Not in-frame&quot;,times=nrow(fusion_file))
+in_frame_vs_not[which(fusion_file[,&quot;Predicted_effect&quot;] == &quot;in-frame&quot;)] &lt;- &quot;in-frame&quot;
+descriptions_per_fusion &lt;- fusion_file[,&quot;Fusion_description&quot;]
+#Here put information we do not technically need to make the plot, but that may be useful to know (like number of supporting reads).
+#This contains breakpoint-specific information.
+other_info_to_possibly_display &lt;- paste0(&quot;Spanning.pairs=&quot;,fusion_file[,&quot;Spanning_pairs&quot;],&quot;;Spanning.unique.reads=&quot;,fusion_file[,&quot;Spanning_unique_reads&quot;],&quot;;Predicted.effect=&quot;,fusion_file[,&quot;Predicted_effect&quot;])
+}
+
+if(fusion_program == &quot;STAR-Fusion&quot;)
+{
+breakpoints_geneA &lt;- fusion_file[,&quot;LeftBreakpoint&quot;]
+breakpoints_geneB &lt;- fusion_file[,&quot;RightBreakpoint&quot;]
+geneA_plus_geneB_names &lt;- fusion_file[,&quot;#FusionName&quot;]
+#STAR-Fusion does not output anything equivalent to in-frame from FusionCatcher. So, will not be able to color by in-frame vs. not for STAR-Fusion, so just make NA.
+in_frame_vs_not &lt;- rep(NA,times=nrow(fusion_file))
+#STAR-Fusion also does not output any description, so just leave a blank for description for those outputs.
+descriptions_per_fusion &lt;- rep(&quot;No description&quot;,times=nrow(fusion_file))
+#Again, we put information that we do not technically need to make the plot, but that may be useful to know, in other_info_to_possibly_display.
+other_info_to_possibly_display &lt;- paste0(&quot;JunctionReadCount=&quot;,fusion_file[,&quot;JunctionReadCount&quot;],&quot;;SpanningFragCount=&quot;,fusion_file[,&quot;SpanningFragCount&quot;],&quot;;SpliceType=&quot;,fusion_file[,&quot;SpliceType&quot;])
+}
+</code></pre>
+
+<p>Now, we put all of these values we just obtained into a data frame, and display the first few rows.</p>
+
+<pre><code class="r">fusion_file_main_info &lt;- data.frame(GeneA.GeneB = geneA_plus_geneB_names,FusionDescription = descriptions_per_fusion,GeneA.Breakpoint = breakpoints_geneA,GeneB.Breakpoint = breakpoints_geneB,In.frame.status = in_frame_vs_not,Other.breakpoint.specific.info = other_info_to_possibly_display,stringsAsFactors=FALSE)
+
+head(fusion_file_main_info)
+</code></pre>
+
+<pre><code>##     GeneA.GeneB
+## 1    MGA--NUTM1
+## 2    MGA--NUTM1
+## 3 FAM175A--HELQ
+## 4 FAM175A--HELQ
+## 5 FAM175A--HELQ
+## 6 FAM175A--HELQ
+##                                                        FusionDescription
+## 1                                                                       
+## 2                                                                       
+## 3 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 4 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 5 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 6 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+##   GeneA.Breakpoint GeneB.Breakpoint In.frame.status
+## 1    15:42054560:+    15:34640170:+        in-frame
+## 2    15:42054048:+    15:34640170:+        in-frame
+## 3     4:84384647:-     4:84375098:-    Not in-frame
+## 4     4:84397796:-     4:84375098:-    Not in-frame
+## 5     4:84403307:-     4:84375098:-        in-frame
+## 6     4:84391356:-     4:84375098:-    Not in-frame
+##                                             Other.breakpoint.specific.info
+## 1    Spanning.pairs=146;Spanning.unique.reads=37;Predicted.effect=in-frame
+## 2     Spanning.pairs=146;Spanning.unique.reads=4;Predicted.effect=in-frame
+## 3 Spanning.pairs=27;Spanning.unique.reads=16;Predicted.effect=out-of-frame
+## 4  Spanning.pairs=27;Spanning.unique.reads=2;Predicted.effect=out-of-frame
+## 5      Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=in-frame
+## 6  Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=out-of-frame
+</code></pre>
+
+<p>Get chromosome, coordinate, and strand from breakpoints_geneA and breakpoints_geneB using the strsplit function to separate the fields separated by &ldquo;:&rdquo;.</p>
+
+<pre><code class="r">breakpoints_geneA_data_frame &lt;- data.frame(chr = sapply(strsplit(breakpoints_geneA,&quot;:&quot;),&quot;[[&quot;,1),coordinate = sapply(strsplit(breakpoints_geneA,&quot;:&quot;),&quot;[[&quot;,2),strand = sapply(strsplit(breakpoints_geneA,&quot;:&quot;),&quot;[[&quot;,3),Breakpoint.string = breakpoints_geneA,stringsAsFactors=FALSE)
+breakpoints_geneA_data_frame$coordinate &lt;- as.numeric(as.vector(breakpoints_geneA_data_frame$coordinate))
+
+breakpoints_geneB_data_frame &lt;- data.frame(chr = sapply(strsplit(breakpoints_geneB,&quot;:&quot;),&quot;[[&quot;,1),coordinate = sapply(strsplit(breakpoints_geneB,&quot;:&quot;),&quot;[[&quot;,2),strand = sapply(strsplit(breakpoints_geneB,&quot;:&quot;),&quot;[[&quot;,3),Breakpoint.string = breakpoints_geneB,stringsAsFactors=FALSE)
+breakpoints_geneB_data_frame$coordinate &lt;- as.numeric(as.vector(breakpoints_geneB_data_frame$coordinate))
+
+head(breakpoints_geneA_data_frame)
+</code></pre>
+
+<pre><code>##   chr coordinate strand Breakpoint.string
+## 1  15   42054560      +     15:42054560:+
+## 2  15   42054048      +     15:42054048:+
+## 3   4   84384647      -      4:84384647:-
+## 4   4   84397796      -      4:84397796:-
+## 5   4   84403307      -      4:84403307:-
+## 6   4   84391356      -      4:84391356:-
+</code></pre>
+
+<pre><code class="r">head(breakpoints_geneB_data_frame)
+</code></pre>
+
+<pre><code>##   chr coordinate strand Breakpoint.string
+## 1  15   34640170      +     15:34640170:+
+## 2  15   34640170      +     15:34640170:+
+## 3   4   84375098      -      4:84375098:-
+## 4   4   84375098      -      4:84375098:-
+## 5   4   84375098      -      4:84375098:-
+## 6   4   84375098      -      4:84375098:-
+</code></pre>
+
+<p>In this version of the script, I am now using Ensembl annotation, which does not have &ldquo;chr&rdquo; prefix on chromosomes.</p>
+
+<p>Check the breakpoints and see if they have &ldquo;chr&rdquo; prefix. If so, auto remove it to make compatible with annotation.</p>
+
+<pre><code class="r">if(length(grep(&#39;chr&#39;,breakpoints_geneA_data_frame$chr[1])) == 1)
+{
+breakpoints_geneA_data_frame$chr &lt;- sapply(strsplit(breakpoints_geneA_data_frame$chr,&quot;chr&quot;),&quot;[[&quot;,2)
+breakpoints_geneB_data_frame$chr &lt;- sapply(strsplit(breakpoints_geneB_data_frame$chr,&quot;chr&quot;),&quot;[[&quot;,2)
+}
+</code></pre>
+
+<p>Now, make a GRanges object out of each of the two breakpoint data frames.</p>
+
+<pre><code class="r">breakpoints_geneA_GRanges &lt;- GRanges(seqnames = breakpoints_geneA_data_frame$chr,
+ranges = IRanges(breakpoints_geneA_data_frame$coordinate,breakpoints_geneA_data_frame$coordinate),
+name = breakpoints_geneA_data_frame$Breakpoint.string,
+strand = breakpoints_geneA_data_frame$strand)
+
+breakpoints_geneB_GRanges &lt;- GRanges(seqnames = breakpoints_geneB_data_frame$chr,
+ranges = IRanges(breakpoints_geneB_data_frame$coordinate,breakpoints_geneB_data_frame$coordinate),
+name = breakpoints_geneB_data_frame$Breakpoint.string,
+strand = breakpoints_geneB_data_frame$strand)
+
+breakpoints_geneA_GRanges
+</code></pre>
+
+<pre><code>## GRanges object with 109 ranges and 1 metadata column:
+##         seqnames               ranges strand |          name
+##            &lt;Rle&gt;            &lt;IRanges&gt;  &lt;Rle&gt; |   &lt;character&gt;
+##     [1]       15 [42054560, 42054560]      + | 15:42054560:+
+##     [2]       15 [42054048, 42054048]      + | 15:42054048:+
+##     [3]        4 [84384647, 84384647]      - |  4:84384647:-
+##     [4]        4 [84397796, 84397796]      - |  4:84397796:-
+##     [5]        4 [84403307, 84403307]      - |  4:84403307:-
+##     ...      ...                  ...    ... .           ...
+##   [105]       11 [61135470, 61135470]      + | 11:61135470:+
+##   [106]       17 [ 7464884,  7464884]      + |  17:7464884:+
+##   [107]       17 [ 7464884,  7464884]      + |  17:7464884:+
+##   [108]       19 [57011616, 57011616]      + | 19:57011616:+
+##   [109]        3 [44552045, 44552045]      - |  3:44552045:-
+##   -------
+##   seqinfo: 23 sequences from an unspecified genome; no seqlengths
+</code></pre>
+
+<pre><code class="r">breakpoints_geneB_GRanges
+</code></pre>
+
+<pre><code>## GRanges object with 109 ranges and 1 metadata column:
+##         seqnames               ranges strand |          name
+##            &lt;Rle&gt;            &lt;IRanges&gt;  &lt;Rle&gt; |   &lt;character&gt;
+##     [1]       15 [34640170, 34640170]      + | 15:34640170:+
+##     [2]       15 [34640170, 34640170]      + | 15:34640170:+
+##     [3]        4 [84375098, 84375098]      - |  4:84375098:-
+##     [4]        4 [84375098, 84375098]      - |  4:84375098:-
+##     [5]        4 [84375098, 84375098]      - |  4:84375098:-
+##     ...      ...                  ...    ... .           ...
+##   [105]       11 [61160236, 61160236]      + | 11:61160236:+
+##   [106]       17 [ 7487236,  7487236]      + |  17:7487236:+
+##   [107]       17 [ 7487236,  7487236]      + |  17:7487236:+
+##   [108]       19 [57022886, 57022886]      + | 19:57022886:+
+##   [109]        3 [44499856, 44499856]      - |  3:44499856:-
+##   -------
+##   seqinfo: 21 sequences from an unspecified genome; no seqlengths
+</code></pre>
+
+<p>Overlap these with exon GRanges.</p>
+
+<p>Then, output the relevant info, including the transcript name plus which exon it matched up to.</p>
+
+<pre><code class="r">overlaps_transcript_exon_coords_and_breakpoints_geneA &lt;- mergeByOverlaps(exons_as_GRanges,breakpoints_geneA_GRanges,maxgap=-1L)
+
+overlaps_transcript_exon_coords_and_breakpoints_geneA
+</code></pre>
+
+<pre><code>## DataFrame with 414 rows and 6 columns
+##          exons_as_GRanges   exon_id       exon_name exon_rank
+##                 &lt;GRanges&gt; &lt;integer&gt;     &lt;character&gt; &lt;integer&gt;
+## 1   1:27094281-27094490:+      5567 ENSE00001349752        11
+## 2   1:27094281-27094490:+      5567 ENSE00001349752        11
+## 3   1:27094281-27094490:+      5567 ENSE00001349752        10
+## 4   1:27094281-27094492:+      5568 ENSE00001698973         2
+## 5   1:53072356-53072617:+     10661 ENSE00000835736         2
+## ...                   ...       ...             ...       ...
+## 410 X:63564925-63565057:-    665840 ENSE00003624461         7
+## 411 X:63564925-63565038:-    665838 ENSE00001949212         1
+## 412 X:63564925-63565057:-    665839 ENSE00003463397         3
+## 413 Y:15815447-15816315:+    672004 ENSE00001016870         1
+## 414 Y:15815447-15816315:+    672004 ENSE00001016870         1
+##     breakpoints_geneA_GRanges         name
+##                     &lt;GRanges&gt;  &lt;character&gt;
+## 1                1:27094490:+ 1:27094490:+
+## 2                1:27094490:+ 1:27094490:+
+## 3                1:27094490:+ 1:27094490:+
+## 4                1:27094490:+ 1:27094490:+
+## 5                1:53072617:+ 1:53072617:+
+## ...                       ...          ...
+## 410              X:63564925:- X:63564925:-
+## 411              X:63564925:- X:63564925:-
+## 412              X:63564925:- X:63564925:-
+## 413              Y:15816315:+ Y:15816315:+
+## 414              Y:15816315:+ Y:15816315:+
+</code></pre>
+
+<pre><code class="r">overlaps_transcript_exon_coords_and_breakpoints_geneA$exons_as_GRanges
+</code></pre>
+
+<pre><code>## GRanges object with 414 ranges and 3 metadata columns:
+##                   seqnames               ranges strand |   exon_id
+##                      &lt;Rle&gt;            &lt;IRanges&gt;  &lt;Rle&gt; | &lt;integer&gt;
+##   ENST00000324856        1 [27094281, 27094490]      + |      5567
+##   ENST00000457599        1 [27094281, 27094490]      + |      5567
+##   ENST00000374152        1 [27094281, 27094490]      + |      5567
+##   ENST00000430291        1 [27094281, 27094492]      + |      5568
+##   ENST00000361314        1 [53072356, 53072617]      + |     10661
+##               ...      ...                  ...    ... .       ...
+##   ENST00000374852        X [63564925, 63565057]      - |    665840
+##   ENST00000478487        X [63564925, 63565038]      - |    665838
+##   ENST00000461403        X [63564925, 63565057]      - |    665839
+##   ENST00000284856        Y [15815447, 15816315]      + |    672004
+##   ENST00000284856        Y [15815447, 15816315]      + |    672004
+##                         exon_name exon_rank
+##                       &lt;character&gt; &lt;integer&gt;
+##   ENST00000324856 ENSE00001349752        11
+##   ENST00000457599 ENSE00001349752        11
+##   ENST00000374152 ENSE00001349752        10
+##   ENST00000430291 ENSE00001698973         2
+##   ENST00000361314 ENSE00000835736         2
+##               ...             ...       ...
+##   ENST00000374852 ENSE00003624461         7
+##   ENST00000478487 ENSE00001949212         1
+##   ENST00000461403 ENSE00003463397         3
+##   ENST00000284856 ENSE00001016870         1
+##   ENST00000284856 ENSE00001016870         1
+##   -------
+##   seqinfo: 297 sequences (1 circular) from an unspecified genome
+</code></pre>
+
+<pre><code class="r">overlaps_transcript_exon_coords_and_breakpoints_geneA$breakpoints_geneA_GRanges
+</code></pre>
+
+<pre><code>## GRanges object with 414 ranges and 1 metadata column:
+##         seqnames               ranges strand |         name
+##            &lt;Rle&gt;            &lt;IRanges&gt;  &lt;Rle&gt; |  &lt;character&gt;
+##     [1]        1 [27094490, 27094490]      + | 1:27094490:+
+##     [2]        1 [27094490, 27094490]      + | 1:27094490:+
+##     [3]        1 [27094490, 27094490]      + | 1:27094490:+
+##     [4]        1 [27094490, 27094490]      + | 1:27094490:+
+##     [5]        1 [53072617, 53072617]      + | 1:53072617:+
+##     ...      ...                  ...    ... .          ...
+##   [410]        X [63564925, 63564925]      - | X:63564925:-
+##   [411]        X [63564925, 63564925]      - | X:63564925:-
+##   [412]        X [63564925, 63564925]      - | X:63564925:-
+##   [413]        Y [15816315, 15816315]      + | Y:15816315:+
+##   [414]        Y [15816315, 15816315]      + | Y:15816315:+
+##   -------
+##   seqinfo: 23 sequences from an unspecified genome; no seqlengths
+</code></pre>
+
+<pre><code class="r">#Get two data frames for the exons_as_GRanges and breakpoints_geneA_GRanges part of the overlap object.
+
+transcript_exon_coords_overlapping_breakpoints_geneA &lt;- BiocGenerics::as.data.frame(overlaps_transcript_exon_coords_and_breakpoints_geneA[,&quot;exons_as_GRanges&quot;],row.names=NULL)
+breakpoint_geneA_coords_overlapping_transcript_exons &lt;- BiocGenerics::as.data.frame(overlaps_transcript_exon_coords_and_breakpoints_geneA[,&quot;breakpoints_geneA_GRanges&quot;],row.names=NULL)
+
+exon_num_per_transcript_per_breakpoint_geneA &lt;- data.frame(Breakpoint.name = overlaps_transcript_exon_coords_and_breakpoints_geneA[,&quot;name&quot;],
+TXNAME = names(overlaps_transcript_exon_coords_and_breakpoints_geneA$exons_as_GRanges), #We get the &quot;ENST&quot; names using the names function from GRanges now.
+EXONRANK = as.numeric(as.vector(transcript_exon_coords_overlapping_breakpoints_geneA$exon_rank)),
+EXONSTART = as.numeric(as.vector(transcript_exon_coords_overlapping_breakpoints_geneA$start)),
+EXONEND = as.numeric(as.vector(transcript_exon_coords_overlapping_breakpoints_geneA$end)),
+Breakpoint.coord = as.numeric(as.vector(breakpoint_geneA_coords_overlapping_transcript_exons$start)), #Get the breakpoint info as a numeric in addition to having the string.
+stringsAsFactors=FALSE)
+
+#We will see that in this initial overlap, the same breakpoint can match multiple transcripts.
+head(exon_num_per_transcript_per_breakpoint_geneA)
+</code></pre>
+
+<pre><code>##   Breakpoint.name          TXNAME EXONRANK EXONSTART  EXONEND
+## 1    1:27094490:+ ENST00000324856       11  27094281 27094490
+## 2    1:27094490:+ ENST00000457599       11  27094281 27094490
+## 3    1:27094490:+ ENST00000374152       10  27094281 27094490
+## 4    1:27094490:+ ENST00000430291        2  27094281 27094492
+## 5    1:53072617:+ ENST00000361314        2  53072356 53072617
+## 6    1:53072617:+ ENST00000459779        2  53072356 53073080
+##   Breakpoint.coord
+## 1         27094490
+## 2         27094490
+## 3         27094490
+## 4         27094490
+## 5         53072617
+## 6         53072617
+</code></pre>
+
+<p>Similar code for geneB. Not going to show since this documentation is already quite long. :)</p>
+
+<p>Let&#39;s also intersect with intron annotation.</p>
+
+<p>Some fusion programs (like FusionCatcher) include fusions where the breakpoints are intronic.</p>
+
+<pre><code class="r">overlaps_transcript_intron_coords_and_breakpoints_geneA &lt;- mergeByOverlaps(introns_as_GRanges,breakpoints_geneA_GRanges,maxgap=-1L)
+transcript_intron_coords_overlapping_breakpoints_geneA &lt;- BiocGenerics::as.data.frame(overlaps_transcript_intron_coords_and_breakpoints_geneA[,&quot;introns_as_GRanges&quot;],row.names=NULL)
+breakpoint_geneA_coords_overlapping_transcript_introns &lt;- BiocGenerics::as.data.frame(overlaps_transcript_intron_coords_and_breakpoints_geneA[,&quot;breakpoints_geneA_GRanges&quot;],row.names=NULL)
+
+intron_per_transcript_per_breakpoint_geneA &lt;- data.frame(Breakpoint.name = overlaps_transcript_intron_coords_and_breakpoints_geneA[,&quot;name&quot;],
+ TXNAME = names(overlaps_transcript_intron_coords_and_breakpoints_geneA$introns_as_GRanges),
+ INTRONSTART = as.numeric(as.vector(transcript_intron_coords_overlapping_breakpoints_geneA$start)),
+ INTRONEND = as.numeric(as.vector(transcript_intron_coords_overlapping_breakpoints_geneA$end)),
+ Breakpoint.coord = as.numeric(as.vector(breakpoint_geneA_coords_overlapping_transcript_introns$start)),
+ stringsAsFactors=FALSE)
+</code></pre>
+
+<p>Repeat for gene B (not shown).</p>
+
+<p>Now, choose the best transcript to represent each breakpoint.</p>
+
+<p>First, we need to separate breakpoints that can be represented within exons, from those that are only in introns, from those that do not overlap either (and thus are &ldquo;incompatible annotation&rdquo;).</p>
+
+<p>Some breakpoints may overlap both exons and introns (of different transcripts), in which case we would rather use the exon to represent the breakpoint.</p>
+
+<pre><code class="r">#How many unique geneA/geneB breakpoints are there?
+dim(fusion_file_main_info)
+</code></pre>
+
+<pre><code>## [1] 109   6
+</code></pre>
+
+<pre><code class="r">length(unique(fusion_file_main_info$GeneA.Breakpoint))
+</code></pre>
+
+<pre><code>## [1] 97
+</code></pre>
+
+<pre><code class="r">length(unique(fusion_file_main_info$GeneB.Breakpoint))
+</code></pre>
+
+<pre><code>## [1] 88
+</code></pre>
+
+<pre><code class="r">#How many geneA and geneB breakpoints overlap exons?
+geneA_breakpoints_overlapping_exons &lt;- unique(exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.name)
+geneB_breakpoints_overlapping_exons &lt;- unique(exon_num_per_transcript_per_breakpoint_geneB$Breakpoint.name)
+
+length(geneA_breakpoints_overlapping_exons)
+</code></pre>
+
+<pre><code>## [1] 92
+</code></pre>
+
+<pre><code class="r">length(geneB_breakpoints_overlapping_exons)
+</code></pre>
+
+<pre><code>## [1] 82
+</code></pre>
+
+<pre><code class="r">#Most breakpoints overlap exons, but a few do not.
+#How many of these overlap introns, vs. not being found in the annotation at all?
+
+geneA_breakpoints_overlapping_introns_only &lt;- setdiff(unique(intron_per_transcript_per_breakpoint_geneA$Breakpoint.name),geneA_breakpoints_overlapping_exons)
+geneB_breakpoints_overlapping_introns_only &lt;- setdiff(unique(intron_per_transcript_per_breakpoint_geneB$Breakpoint.name),geneB_breakpoints_overlapping_exons)
+
+length(geneA_breakpoints_overlapping_introns_only)
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+<pre><code class="r">length(geneB_breakpoints_overlapping_introns_only)
+</code></pre>
+
+<pre><code>## [1] 6
+</code></pre>
+
+<pre><code class="r">#Looks like there is one geneA breakpoint that does not overlap any annotated exons or introns.
+#Let&#39;s get the row number(s) where one or both genes has a breakpoint that does not overlap any annotated exons or introns.
+
+geneA_breakpoints_incompatible_annotation &lt;- setdiff(unique(breakpoints_geneA),c(geneA_breakpoints_overlapping_exons,geneA_breakpoints_overlapping_introns_only))
+geneB_breakpoints_incompatible_annotation &lt;- setdiff(unique(breakpoints_geneB),c(geneB_breakpoints_overlapping_exons,geneB_breakpoints_overlapping_introns_only))
+
+incompatible_annotation_rows &lt;- c()
+if(length(geneA_breakpoints_incompatible_annotation) &gt; 0){
+    incompatible_annotation_rows &lt;- c(incompatible_annotation_rows,grep(paste0(geneA_breakpoints_incompatible_annotation,collapse=&quot;|&quot;),breakpoints_geneA))
+}
+
+if(length(geneB_breakpoints_incompatible_annotation) &gt; 0){
+    incompatible_annotation_rows &lt;- c(incompatible_annotation_rows,grep(paste0(geneB_breakpoints_incompatible_annotation,collapse=&quot;|&quot;),breakpoints_geneB))
+}
+
+#Unique in case some rows have unannotated breakpoints for both geneA and geneB.
+
+incompatible_annotation_rows &lt;- unique(incompatible_annotation_rows)
+
+#Which row(s) are we skipping? Let&#39;s look at them in more detail.
+
+fusion_file_main_info[incompatible_annotation_rows,]
+</code></pre>
+
+<pre><code>##      GeneA.GeneB   FusionDescription GeneA.Breakpoint GeneB.Breakpoint
+## 61 KDELC2--EXPH5 adjacent,1K&lt;gap&lt;10K   11:108342816:-   11:108464231:-
+##    In.frame.status
+## 61    Not in-frame
+##                                                         Other.breakpoint.specific.info
+## 61 Spanning.pairs=4;Spanning.unique.reads=3;Predicted.effect=intergenic/CDS(truncated)
+</code></pre>
+
+<p>Now, we have all possible exons across all annotated transcripts matching up to each breakpoint.</p>
+
+<p>We need to choose the best isoform for each breakpoint.</p>
+
+<p>Match up the exon per breakpoint table to the &ldquo;transcript info&rdquo; table.</p>
+
+<p>Then, prioritize coding over noncoding, then longer CDS, then longer transcript.</p>
+
+<pre><code class="r">#Showing for geneA only.
+
+exon_num_per_transcript_per_breakpoint_geneA &lt;- merge(exon_num_per_transcript_per_breakpoint_geneA,transcript_info,
+    by.x=&quot;TXNAME&quot;,by.y = &quot;ensembl_transcript_id&quot;)
+
+head(exon_num_per_transcript_per_breakpoint_geneA)
+</code></pre>
+
+<pre><code>##            TXNAME Breakpoint.name EXONRANK EXONSTART  EXONEND
+## 1 ENST00000006777    7:75513166:+        3  75513016 75513166
+## 2 ENST00000216187   22:36886235:-        9  36884289 36886314
+## 3 ENST00000219905   15:42054048:+       21  42053937 42054048
+## 4 ENST00000219905   15:42054560:+       22  42054327 42054560
+## 5 ENST00000223122     7:7278553:+        2   7277886  7278553
+## 6 ENST00000223122     7:7283381:+        3   7283155  7288282
+##   Breakpoint.coord external_gene_name transcript_biotype cds_length
+## 1         75513166             RHBDD2     protein_coding       1095
+## 2         36886235            FOXRED2     protein_coding       2055
+## 3         42054048                MGA     protein_coding       9198
+## 4         42054560                MGA     protein_coding       9198
+## 5          7278553            C1GALT1     protein_coding       1092
+## 6          7283381            C1GALT1     protein_coding       1092
+##   transcript_length coding
+## 1              1802      1
+## 2              3933      1
+## 3             12042      1
+## 4             12042      1
+## 5              6078      1
+## 6              6078      1
+</code></pre>
+
+<pre><code class="r">#Remember that &quot;coding&quot; is 1 for protein coding, 0 otherwise.
+#So can use reverse numerical sort to get coding first.
+
+rank_transcripts_by_best_to_represent &lt;- order(exon_num_per_transcript_per_breakpoint_geneA$coding,
+exon_num_per_transcript_per_breakpoint_geneA$cds_length,
+exon_num_per_transcript_per_breakpoint_geneA$transcript_length,decreasing=TRUE)
+
+exon_num_per_transcript_per_breakpoint_geneA &lt;- exon_num_per_transcript_per_breakpoint_geneA[rank_transcripts_by_best_to_represent,]
+
+head(exon_num_per_transcript_per_breakpoint_geneA)
+</code></pre>
+
+<pre><code>##              TXNAME Breakpoint.name EXONRANK EXONSTART  EXONEND
+## 3   ENST00000219905   15:42054048:+       21  42053937 42054048
+## 4   ENST00000219905   15:42054560:+       22  42054327 42054560
+## 366 ENST00000570161   15:42054048:+       20  42053937 42054048
+## 367 ENST00000570161   15:42054560:+       21  42054327 42054560
+## 114 ENST00000389936   15:42054048:+       22  42053937 42054048
+## 115 ENST00000389936   15:42054560:+       23  42054327 42054560
+##     Breakpoint.coord external_gene_name transcript_biotype cds_length
+## 3           42054048                MGA     protein_coding       9198
+## 4           42054560                MGA     protein_coding       9198
+## 366         42054048                MGA     protein_coding       9198
+## 367         42054560                MGA     protein_coding       9198
+## 114         42054048                MGA     protein_coding       9081
+## 115         42054560                MGA     protein_coding       9081
+##     transcript_length coding
+## 3               12042      1
+## 4               12042      1
+## 366             11859      1
+## 367             11859      1
+## 114             11921      1
+## 115             11921      1
+</code></pre>
+
+<pre><code class="r">#After this ordering, take the first occurence of each breakpoint.
+
+exon_num_per_transcript_per_breakpoint_geneA &lt;- exon_num_per_transcript_per_breakpoint_geneA[which(
+duplicated(exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.name) == FALSE),]
+</code></pre>
+
+<p>Similar for introns.</p>
+
+<p>Except, first we remove from the intron table breakpoints that have matching exons.</p>
+
+<pre><code class="r">#Remove breakpoints matching exons.
+
+intron_per_transcript_per_breakpoint_geneA &lt;- merge(intron_per_transcript_per_breakpoint_geneA,
+data.frame(Breakpoint.name = geneA_breakpoints_overlapping_introns_only),
+by = &quot;Breakpoint.name&quot;)
+
+intron_per_transcript_per_breakpoint_geneA &lt;- merge(intron_per_transcript_per_breakpoint_geneA,transcript_info,
+    by.x=&quot;TXNAME&quot;,by.y = &quot;ensembl_transcript_id&quot;)
+
+rank_transcripts_by_best_to_represent &lt;- order(intron_per_transcript_per_breakpoint_geneA$coding,
+intron_per_transcript_per_breakpoint_geneA$cds_length,
+intron_per_transcript_per_breakpoint_geneA$transcript_length,decreasing=TRUE)
+
+intron_per_transcript_per_breakpoint_geneA &lt;- intron_per_transcript_per_breakpoint_geneA[rank_transcripts_by_best_to_represent,]
+
+intron_per_transcript_per_breakpoint_geneA &lt;- intron_per_transcript_per_breakpoint_geneA[which(
+duplicated(intron_per_transcript_per_breakpoint_geneA$Breakpoint.name) == FALSE),]
+</code></pre>
+
+<p>Repeat for gene B (not shown).</p>
+
+<p>Now, we need to get the nearest exon for the intron annotation.</p>
+
+<pre><code class="r">#Match up the intron coordinates with the exons data frame.
+introns_geneA_find_exon_before &lt;- merge(intron_per_transcript_per_breakpoint_geneA,
+exons_as_data_frame[,c(&quot;EXONSTRAND&quot;,&quot;EXONSTART&quot;,&quot;EXONEND&quot;,&quot;EXONRANK&quot;,&quot;TXNAME&quot;)],
+by=&quot;TXNAME&quot;)
+
+#If on positive strand, subtract one from the intron start. This will give EXONEND of the exon before.
+#If on negative strand, add one to the intron end. This will give EXONSTART of the exon before.
+
+indices_rows_where_intron_adjacent_to_exon &lt;- which(introns_geneA_find_exon_before$EXONSTRAND == &quot;+&quot; &amp; 
+(introns_geneA_find_exon_before$INTRONSTART - 1) == introns_geneA_find_exon_before$EXONEND)
+
+indices_rows_where_intron_adjacent_to_exon &lt;- c(indices_rows_where_intron_adjacent_to_exon,which(introns_geneA_find_exon_before$EXONSTRAND == &quot;-&quot; &amp; 
+(introns_geneA_find_exon_before$INTRONEND + 1) == introns_geneA_find_exon_before$EXONSTART))
+
+introns_geneA_find_exon_before &lt;- introns_geneA_find_exon_before[indices_rows_where_intron_adjacent_to_exon,]
+
+head(introns_geneA_find_exon_before)
+</code></pre>
+
+<pre><code>##             TXNAME Breakpoint.name INTRONSTART INTRONEND Breakpoint.coord
+## 9  ENST00000288111   14:24767820:-    24766088  24768162         24767820
+## 15 ENST00000400256     18:325628:-      321808    331667           325628
+## 24 ENST00000400256     18:470221:-      357523    480706           470221
+## 39 ENST00000455511  12:110825106:-   110824275 110825543        110825106
+##    external_gene_name transcript_biotype cds_length transcript_length
+## 9               DHRS1     protein_coding        942              1480
+## 15            COLEC12     protein_coding       2229              3121
+## 24            COLEC12     protein_coding       2229              3121
+## 39             ANAPC7     protein_coding       1800              3045
+##    coding EXONSTRAND EXONSTART   EXONEND EXONRANK
+## 9       1          -  24768163  24768336        2
+## 15      1          -    331668    331777        8
+## 24      1          -    480707    480757        2
+## 39      1          - 110825544 110825697        5
+</code></pre>
+
+<p>Add additional info to exon table as well, mainly the strand information plus exon length for matching exons.</p>
+
+<pre><code class="r">exon_num_per_transcript_per_breakpoint_geneA &lt;- merge(exon_num_per_transcript_per_breakpoint_geneA,
+exons_as_data_frame[,c(&quot;TXNAME&quot;,&quot;EXONRANK&quot;,&quot;EXONSTRAND&quot;,&quot;EXONLENGTH&quot;)],
+by=c(&quot;TXNAME&quot;,&quot;EXONRANK&quot;))
+
+exon_num_per_transcript_per_breakpoint_geneB &lt;- merge(exon_num_per_transcript_per_breakpoint_geneB,
+exons_as_data_frame[,c(&quot;TXNAME&quot;,&quot;EXONRANK&quot;,&quot;EXONSTRAND&quot;,&quot;EXONLENGTH&quot;)],
+by=c(&quot;TXNAME&quot;,&quot;EXONRANK&quot;))
+
+head(exon_num_per_transcript_per_breakpoint_geneA)
+</code></pre>
+
+<pre><code>##            TXNAME EXONRANK Breakpoint.name EXONSTART   EXONEND
+## 1 ENST00000006777        3    7:75513166:+  75513016  75513166
+## 2 ENST00000219905       21   15:42054048:+  42053937  42054048
+## 3 ENST00000219905       22   15:42054560:+  42054327  42054560
+## 4 ENST00000225964       50   17:48263190:-  48263139  48263381
+## 5 ENST00000260952        5   2:190532671:+ 190532490 190532671
+## 6 ENST00000262293        9   17:57275150:+  57275054  57275150
+##   Breakpoint.coord external_gene_name transcript_biotype cds_length
+## 1         75513166             RHBDD2     protein_coding       1095
+## 2         42054048                MGA     protein_coding       9198
+## 3         42054560                MGA     protein_coding       9198
+## 4         48263190             COL1A1     protein_coding       4395
+## 5        190532671             ASNSD1     protein_coding       1932
+## 6         57275150              PRR11     protein_coding       1083
+##   transcript_length coding EXONSTRAND EXONLENGTH
+## 1              1802      1          +        151
+## 2             12042      1          +        112
+## 3             12042      1          +        234
+## 4              6727      1          -        243
+## 5              2450      1          +        182
+## 6              2332      1          +         97
+</code></pre>
+
+<p>Switch exon start and end if on negative strand.</p>
+
+<pre><code class="r">geneA_new_exon_start_and_end &lt;- data.frame(
+EXONSTART = exon_num_per_transcript_per_breakpoint_geneA$EXONSTART,
+EXONEND = exon_num_per_transcript_per_breakpoint_geneA$EXONEND)
+
+geneA_new_exon_start_and_end$EXONSTART &lt;- ifelse(exon_num_per_transcript_per_breakpoint_geneA$EXONSTRAND == &quot;+&quot;,
+exon_num_per_transcript_per_breakpoint_geneA$EXONSTART,
+exon_num_per_transcript_per_breakpoint_geneA$EXONEND)
+
+geneA_new_exon_start_and_end$EXONEND &lt;- ifelse(exon_num_per_transcript_per_breakpoint_geneA$EXONSTRAND == &quot;+&quot;,
+exon_num_per_transcript_per_breakpoint_geneA$EXONEND,
+exon_num_per_transcript_per_breakpoint_geneA$EXONSTART)
+</code></pre>
+
+<p>Now, determine start, middle, or end and percent into exon based on distance from start or end.</p>
+
+<pre><code class="r">geneA_matching_exon_start_middle_end &lt;- rep(&quot;Middle&quot;,
+times=nrow(exon_num_per_transcript_per_breakpoint_geneA))
+
+geneA_matching_exon_start_middle_end[which(
+exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.coord == 
+geneA_new_exon_start_and_end$EXONSTART)] &lt;- &quot;Start&quot;
+
+geneA_matching_exon_start_middle_end[which(
+exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.coord == 
+geneA_new_exon_start_and_end$EXONEND)] &lt;- &quot;End&quot;
+
+geneA_length_into_exon &lt;- abs(
+exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.coord - 
+geneA_new_exon_start_and_end$EXONSTART) + 1
+
+geneA_length_into_exon[which(geneA_matching_exon_start_middle_end != &quot;Middle&quot;)] &lt;- NA
+
+geneA_percent_into_exon &lt;- geneA_length_into_exon/
+exon_num_per_transcript_per_breakpoint_geneA$EXONLENGTH
+</code></pre>
+
+<p>Now, we use the information about which exon each breakpoint matches up to plus whether the breakpoint falls at start/middle/end, to make a big data frame.</p>
+
+<pre><code class="r">#&quot;Transcript other info&quot; has info like the biotype of the transcript, which we may want to display later on.
+exon_num_per_transcript_per_breakpoint_geneA &lt;- data.frame(
+Breakpoint = exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.coord,
+Transcript = exon_num_per_transcript_per_breakpoint_geneA$TXNAME,
+ExonicOrNot = &quot;yes&quot;,
+ExonInOrBefore = exon_num_per_transcript_per_breakpoint_geneA$EXONRANK,
+Breakpoint.name = exon_num_per_transcript_per_breakpoint_geneA$Breakpoint.name,
+StartMiddleEnd = geneA_matching_exon_start_middle_end,LengthIntoExon = geneA_length_into_exon,PercentIntoExon = geneA_percent_into_exon,
+Transcript.other.info = paste0(&quot;Transcript_gene_name=&quot;,exon_num_per_transcript_per_breakpoint_geneA$external_gene_name,&quot;;Transcript_biotype=&quot;,exon_num_per_transcript_per_breakpoint_geneA$transcript_biotype,&quot;;Transcript_CDS_length=&quot;,exon_num_per_transcript_per_breakpoint_geneA$cds_length,&quot;;Transcript_total_length=&quot;,exon_num_per_transcript_per_breakpoint_geneA$transcript_length),
+stringsAsFactors=FALSE)
+
+head(exon_num_per_transcript_per_breakpoint_geneA)
+</code></pre>
+
+<pre><code>##   Breakpoint      Transcript ExonicOrNot ExonInOrBefore Breakpoint.name
+## 1   75513166 ENST00000006777         yes              3    7:75513166:+
+## 2   42054048 ENST00000219905         yes             21   15:42054048:+
+## 3   42054560 ENST00000219905         yes             22   15:42054560:+
+## 4   48263190 ENST00000225964         yes             50   17:48263190:-
+## 5  190532671 ENST00000260952         yes              5   2:190532671:+
+## 6   57275150 ENST00000262293         yes              9   17:57275150:+
+##   StartMiddleEnd LengthIntoExon PercentIntoExon
+## 1            End             NA              NA
+## 2            End             NA              NA
+## 3            End             NA              NA
+## 4         Middle            192       0.7901235
+## 5            End             NA              NA
+## 6            End             NA              NA
+##                                                                                                   Transcript.other.info
+## 1 Transcript_gene_name=RHBDD2;Transcript_biotype=protein_coding;Transcript_CDS_length=1095;Transcript_total_length=1802
+## 2   Transcript_gene_name=MGA;Transcript_biotype=protein_coding;Transcript_CDS_length=9198;Transcript_total_length=12042
+## 3   Transcript_gene_name=MGA;Transcript_biotype=protein_coding;Transcript_CDS_length=9198;Transcript_total_length=12042
+## 4 Transcript_gene_name=COL1A1;Transcript_biotype=protein_coding;Transcript_CDS_length=4395;Transcript_total_length=6727
+## 5 Transcript_gene_name=ASNSD1;Transcript_biotype=protein_coding;Transcript_CDS_length=1932;Transcript_total_length=2450
+## 6  Transcript_gene_name=PRR11;Transcript_biotype=protein_coding;Transcript_CDS_length=1083;Transcript_total_length=2332
+</code></pre>
+
+<pre><code class="r">#Add the total number of exons per transcript.
+
+exon_num_per_transcript_per_breakpoint_geneA &lt;- merge(exon_num_per_transcript_per_breakpoint_geneA,
+total_exons_per_transcript,
+by.x=&quot;Transcript&quot;,by.y=&quot;TXNAME&quot;)
+
+head(exon_num_per_transcript_per_breakpoint_geneA)
+</code></pre>
+
+<pre><code>##        Transcript Breakpoint ExonicOrNot ExonInOrBefore Breakpoint.name
+## 1 ENST00000006777   75513166         yes              3    7:75513166:+
+## 2 ENST00000219905   42054048         yes             21   15:42054048:+
+## 3 ENST00000219905   42054560         yes             22   15:42054560:+
+## 4 ENST00000225964   48263190         yes             50   17:48263190:-
+## 5 ENST00000260952  190532671         yes              5   2:190532671:+
+## 6 ENST00000262293   57275150         yes              9   17:57275150:+
+##   StartMiddleEnd LengthIntoExon PercentIntoExon
+## 1            End             NA              NA
+## 2            End             NA              NA
+## 3            End             NA              NA
+## 4         Middle            192       0.7901235
+## 5            End             NA              NA
+## 6            End             NA              NA
+##                                                                                                   Transcript.other.info
+## 1 Transcript_gene_name=RHBDD2;Transcript_biotype=protein_coding;Transcript_CDS_length=1095;Transcript_total_length=1802
+## 2   Transcript_gene_name=MGA;Transcript_biotype=protein_coding;Transcript_CDS_length=9198;Transcript_total_length=12042
+## 3   Transcript_gene_name=MGA;Transcript_biotype=protein_coding;Transcript_CDS_length=9198;Transcript_total_length=12042
+## 4 Transcript_gene_name=COL1A1;Transcript_biotype=protein_coding;Transcript_CDS_length=4395;Transcript_total_length=6727
+## 5 Transcript_gene_name=ASNSD1;Transcript_biotype=protein_coding;Transcript_CDS_length=1932;Transcript_total_length=2450
+## 6  Transcript_gene_name=PRR11;Transcript_biotype=protein_coding;Transcript_CDS_length=1083;Transcript_total_length=2332
+##   TotalExonNum
+## 1            4
+## 2           24
+## 3           24
+## 4           51
+## 5            6
+## 6           10
+</code></pre>
+
+<p>Not shown - set up similarly for geneB and introns for both geneA and geneB.</p>
+
+<p>Combine the exon and intron tables.</p>
+
+<pre><code class="r">geneA_representative_transcripts_per_breakpoint &lt;- rbind(exon_num_per_transcript_per_breakpoint_geneA,introns_geneA_find_exon_before)
+geneB_representative_transcripts_per_breakpoint &lt;- rbind(exon_num_per_transcript_per_breakpoint_geneB,introns_geneB_find_exon_before)
+</code></pre>
+
+<p>Bind the match-up to transcripts to the other info (descriptions, predicted effect, etc.).</p>
+
+<pre><code class="r">fusion_file_main_info_incompatible_annotation &lt;- fusion_file_main_info[incompatible_annotation_rows,]
+
+fusion_file_main_info &lt;- fusion_file_main_info[setdiff(1:nrow(fusion_file_main_info),incompatible_annotation_rows),]
+
+fusion_file_main_info_match_up_geneA &lt;- merge(fusion_file_main_info,
+geneA_representative_transcripts_per_breakpoint,
+by.x = &quot;GeneA.Breakpoint&quot;,by.y = &quot;Breakpoint.name&quot;)
+
+fusion_file_main_info_match_up_geneB &lt;- merge(fusion_file_main_info,
+geneB_representative_transcripts_per_breakpoint,
+by.x = &quot;GeneB.Breakpoint&quot;,by.y = &quot;Breakpoint.name&quot;)
+
+#Order geneA and geneB info by the same combination of breakpoints in fusion_file_main_info so they match up.
+
+fusion_file_main_info_match_up_geneA &lt;- fusion_file_main_info_match_up_geneA[match(
+paste0(fusion_file_main_info$GeneA.Breakpoint,&quot;/&quot;,fusion_file_main_info$GeneB.Breakpoint),
+paste0(fusion_file_main_info_match_up_geneA$GeneA.Breakpoint,&quot;/&quot;,fusion_file_main_info_match_up_geneA$GeneB.Breakpoint)),]
+
+fusion_file_main_info_match_up_geneB &lt;- fusion_file_main_info_match_up_geneB[match(paste0(fusion_file_main_info$GeneA.Breakpoint,&quot;/&quot;,fusion_file_main_info$GeneB.Breakpoint),paste0(fusion_file_main_info_match_up_geneB$GeneA.Breakpoint,&quot;/&quot;,fusion_file_main_info_match_up_geneB$GeneB.Breakpoint)),]
+
+#Last minor detail: multiply PercentIntoExon by 100, as it is actually currently a proportion in range 0-1.
+
+fusion_file_main_info_match_up_geneA$PercentIntoExon &lt;- fusion_file_main_info_match_up_geneA$PercentIntoExon*100
+fusion_file_main_info_match_up_geneB$PercentIntoExon &lt;- fusion_file_main_info_match_up_geneB$PercentIntoExon*100
+
+head(fusion_file_main_info)
+</code></pre>
+
+<pre><code>##     GeneA.GeneB
+## 1    MGA--NUTM1
+## 2    MGA--NUTM1
+## 3 FAM175A--HELQ
+## 4 FAM175A--HELQ
+## 5 FAM175A--HELQ
+## 6 FAM175A--HELQ
+##                                                        FusionDescription
+## 1                                                                       
+## 2                                                                       
+## 3 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 4 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 5 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 6 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+##   GeneA.Breakpoint GeneB.Breakpoint In.frame.status
+## 1    15:42054560:+    15:34640170:+        in-frame
+## 2    15:42054048:+    15:34640170:+        in-frame
+## 3     4:84384647:-     4:84375098:-    Not in-frame
+## 4     4:84397796:-     4:84375098:-    Not in-frame
+## 5     4:84403307:-     4:84375098:-        in-frame
+## 6     4:84391356:-     4:84375098:-    Not in-frame
+##                                             Other.breakpoint.specific.info
+## 1    Spanning.pairs=146;Spanning.unique.reads=37;Predicted.effect=in-frame
+## 2     Spanning.pairs=146;Spanning.unique.reads=4;Predicted.effect=in-frame
+## 3 Spanning.pairs=27;Spanning.unique.reads=16;Predicted.effect=out-of-frame
+## 4  Spanning.pairs=27;Spanning.unique.reads=2;Predicted.effect=out-of-frame
+## 5      Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=in-frame
+## 6  Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=out-of-frame
+</code></pre>
+
+<pre><code class="r">head(fusion_file_main_info_match_up_geneA)
+</code></pre>
+
+<pre><code>##    GeneA.Breakpoint   GeneA.GeneB
+## 38    15:42054560:+    MGA--NUTM1
+## 37    15:42054048:+    MGA--NUTM1
+## 80     4:84384647:- FAM175A--HELQ
+## 82     4:84397796:- FAM175A--HELQ
+## 83     4:84403307:- FAM175A--HELQ
+## 81     4:84391356:- FAM175A--HELQ
+##                                                         FusionDescription
+## 38                                                                       
+## 37                                                                       
+## 80 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 82 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 83 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 81 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+##    GeneB.Breakpoint In.frame.status
+## 38    15:34640170:+        in-frame
+## 37    15:34640170:+        in-frame
+## 80     4:84375098:-    Not in-frame
+## 82     4:84375098:-    Not in-frame
+## 83     4:84375098:-        in-frame
+## 81     4:84375098:-    Not in-frame
+##                                              Other.breakpoint.specific.info
+## 38    Spanning.pairs=146;Spanning.unique.reads=37;Predicted.effect=in-frame
+## 37     Spanning.pairs=146;Spanning.unique.reads=4;Predicted.effect=in-frame
+## 80 Spanning.pairs=27;Spanning.unique.reads=16;Predicted.effect=out-of-frame
+## 82  Spanning.pairs=27;Spanning.unique.reads=2;Predicted.effect=out-of-frame
+## 83      Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=in-frame
+## 81  Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=out-of-frame
+##         Transcript Breakpoint ExonicOrNot ExonInOrBefore StartMiddleEnd
+## 38 ENST00000219905   42054560         yes             22            End
+## 37 ENST00000219905   42054048         yes             21            End
+## 80 ENST00000321945   84384647         yes              8            End
+## 82 ENST00000321945   84397796         yes              3            End
+## 83 ENST00000321945   84403307         yes              2            End
+## 81 ENST00000321945   84391356         yes              5            End
+##    LengthIntoExon PercentIntoExon
+## 38             NA              NA
+## 37             NA              NA
+## 80             NA              NA
+## 82             NA              NA
+## 83             NA              NA
+## 81             NA              NA
+##                                                                                                     Transcript.other.info
+## 38    Transcript_gene_name=MGA;Transcript_biotype=protein_coding;Transcript_CDS_length=9198;Transcript_total_length=12042
+## 37    Transcript_gene_name=MGA;Transcript_biotype=protein_coding;Transcript_CDS_length=9198;Transcript_total_length=12042
+## 80 Transcript_gene_name=FAM175A;Transcript_biotype=protein_coding;Transcript_CDS_length=1230;Transcript_total_length=2869
+## 82 Transcript_gene_name=FAM175A;Transcript_biotype=protein_coding;Transcript_CDS_length=1230;Transcript_total_length=2869
+## 83 Transcript_gene_name=FAM175A;Transcript_biotype=protein_coding;Transcript_CDS_length=1230;Transcript_total_length=2869
+## 81 Transcript_gene_name=FAM175A;Transcript_biotype=protein_coding;Transcript_CDS_length=1230;Transcript_total_length=2869
+##    TotalExonNum
+## 38           24
+## 37           24
+## 80            9
+## 82            9
+## 83            9
+## 81            9
+</code></pre>
+
+<pre><code class="r">head(fusion_file_main_info_match_up_geneB)
+</code></pre>
+
+<pre><code>##    GeneB.Breakpoint   GeneA.GeneB
+## 36    15:34640170:+    MGA--NUTM1
+## 37    15:34640170:+    MGA--NUTM1
+## 80     4:84375098:- FAM175A--HELQ
+## 81     4:84375098:- FAM175A--HELQ
+## 82     4:84375098:- FAM175A--HELQ
+## 83     4:84375098:- FAM175A--HELQ
+##                                                         FusionDescription
+## 36                                                                       
+## 37                                                                       
+## 80 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 81 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 82 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+## 83 adjacent,known,healthy,cacg,bodymap2,hpa,banned,1K&lt;gap&lt;10K,readthrough
+##    GeneA.Breakpoint In.frame.status
+## 36    15:42054560:+        in-frame
+## 37    15:42054048:+        in-frame
+## 80     4:84384647:-    Not in-frame
+## 81     4:84397796:-    Not in-frame
+## 82     4:84403307:-        in-frame
+## 83     4:84391356:-    Not in-frame
+##                                              Other.breakpoint.specific.info
+## 36    Spanning.pairs=146;Spanning.unique.reads=37;Predicted.effect=in-frame
+## 37     Spanning.pairs=146;Spanning.unique.reads=4;Predicted.effect=in-frame
+## 80 Spanning.pairs=27;Spanning.unique.reads=16;Predicted.effect=out-of-frame
+## 81  Spanning.pairs=27;Spanning.unique.reads=2;Predicted.effect=out-of-frame
+## 82      Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=in-frame
+## 83  Spanning.pairs=27;Spanning.unique.reads=1;Predicted.effect=out-of-frame
+##         Transcript Breakpoint ExonicOrNot ExonInOrBefore StartMiddleEnd
+## 36 ENST00000537011   34640170         yes              3          Start
+## 37 ENST00000537011   34640170         yes              3          Start
+## 80 ENST00000295488   84375098         yes              2            End
+## 81 ENST00000295488   84375098         yes              2            End
+## 82 ENST00000295488   84375098         yes              2            End
+## 83 ENST00000295488   84375098         yes              2            End
+##    LengthIntoExon PercentIntoExon
+## 36             NA              NA
+## 37             NA              NA
+## 80             NA              NA
+## 81             NA              NA
+## 82             NA              NA
+## 83             NA              NA
+##                                                                                                   Transcript.other.info
+## 36 Transcript_gene_name=NUTM1;Transcript_biotype=protein_coding;Transcript_CDS_length=3483;Transcript_total_length=4102
+## 37 Transcript_gene_name=NUTM1;Transcript_biotype=protein_coding;Transcript_CDS_length=3483;Transcript_total_length=4102
+## 80  Transcript_gene_name=HELQ;Transcript_biotype=protein_coding;Transcript_CDS_length=3306;Transcript_total_length=3579
+## 81  Transcript_gene_name=HELQ;Transcript_biotype=protein_coding;Transcript_CDS_length=3306;Transcript_total_length=3579
+## 82  Transcript_gene_name=HELQ;Transcript_biotype=protein_coding;Transcript_CDS_length=3306;Transcript_total_length=3579
+## 83  Transcript_gene_name=HELQ;Transcript_biotype=protein_coding;Transcript_CDS_length=3306;Transcript_total_length=3579
+##    TotalExonNum
+## 36            8
+## 37            8
+## 80           18
+## 81           18
+## 82           18
+## 83           18
+</code></pre>
+
+<pre><code class="r">#Save objects.
+
+save(list=c(&quot;fusion_file&quot;,&quot;fusion_program&quot;,&quot;genome&quot;,&quot;output_dir&quot;,&quot;fusion_file_main_info_incompatible_annotation&quot;,&quot;fusion_file_main_info&quot;,&quot;fusion_file_main_info_match_up_geneA&quot;,&quot;fusion_file_main_info_match_up_geneB&quot;),file=paste0(output_dir,&quot;/overlaps_breakpoints_and_transcripts.Rdata&quot;))
+</code></pre>
+
+<p>Final step in annotation is to match up UTR table.</p>
+
+<p>utrs_data_frame_for_plotting contains 5&#39; and 3&#39; UTRs for all annotated transcripts.</p>
+
+<p>Subset it to include only transcripts being used to represent our fusions.</p>
+
+<pre><code class="r">fiveprime_utrs &lt;- utrs_data_frame_for_plotting[order(utrs_data_frame_for_plotting$ExonInOrBefore),]
+fiveprime_utrs &lt;- fiveprime_utrs[which(duplicated(fiveprime_utrs$Transcript) == FALSE),]
+rownames(fiveprime_utrs) &lt;- fiveprime_utrs$Transcript
+
+threeprime_utrs &lt;- utrs_data_frame_for_plotting[order(utrs_data_frame_for_plotting$ExonInOrBefore,decreasing=TRUE),]
+threeprime_utrs &lt;- threeprime_utrs[which(duplicated(threeprime_utrs$Transcript) == FALSE),]
+rownames(threeprime_utrs) &lt;- threeprime_utrs$Transcript
+
+fiveprime_utrs &lt;- fiveprime_utrs[unique(c(fusion_file_main_info_match_up_geneA$Transcript,fusion_file_main_info_match_up_geneB$Transcript)),]
+threeprime_utrs &lt;- threeprime_utrs[unique(c(fusion_file_main_info_match_up_geneA$Transcript,fusion_file_main_info_match_up_geneB$Transcript)),]
+</code></pre>
+
+<p>Here are the functions to make the initial plot (draw the boxes, make the plot the appropriate width) and to draw breakpoint lines.</p>
+
+<p>Only thing is I no longer leave room for the coverage bars, so the y coordinates are different than they were. For example, the exons bars are now around y coordinates 8/9 rather than 6/7.</p>
+
+<pre><code class="r">setup_fusion_plot &lt;- function(exon_num){
+
+#Plot will go from y=1 to y=10, and x=0 to x=120*(exon_num - 1)+200.
+#The plot x-limit is based on the fact that the exons will be 101 bp, and the introns will be 20bp, plus a little extra room to put text, legends, etc.
+#Then we can use the standard coordinate system to place things. For example, if we want something near the top but not quite, and in the middle, setting the x coordinate as half the plot max,
+#and the y coordinate at 9.5 out of 10, should work well.
+
+plot_xmax &lt;- 120*(exon_num - 1)+200
+
+plot(0,pch=&#39;&#39;,ylab=&#39;&#39;,xlab=&#39;&#39;,xlim=c(0,plot_xmax),ylim=c(0,10),xaxt = &#39;n&#39;,yaxt = &#39;n&#39;,bty=&#39;n&#39;)
+
+for(exon in 0:(exon_num - 1))
+{
+rect(120*exon,8.5,(120*exon)+100,9.25)
+end_this_exon &lt;- (120*exon)+100
+if(exon &lt; (exon_num - 1)){lines(c(end_this_exon,end_this_exon+20),c(8.875,8.875),type=&quot;l&quot;)}
+}
+
+}
+
+#We are calling this draw_breakpoint, but will actually use the same function to draw UTR lines.
+#In this iteration of the script I am going back to drawing fusion breakpoints in orange and UTR lines in blue.
+#Of course we will eventually want to draw UTRs as smaller boxes.
+
+draw_breakpoint &lt;- function(breakpoint_info_data_frame,mycolor){
+
+exon_index &lt;- breakpoint_info_data_frame$ExonInOrBefore - 1
+breakpoint_type &lt;- breakpoint_info_data_frame$StartMiddleEnd
+
+exon_of_interest_start_coordinate &lt;- 120*exon_index
+
+if(breakpoint_type == &quot;Start&quot;){breakpoint_x_coordinate_on_plot &lt;- exon_of_interest_start_coordinate}
+if(breakpoint_type == &quot;End&quot;){breakpoint_x_coordinate_on_plot &lt;- exon_of_interest_start_coordinate + 100}
+if(breakpoint_type == &quot;Intronic&quot;){breakpoint_x_coordinate_on_plot &lt;- exon_of_interest_start_coordinate + 110}
+if(breakpoint_type == &quot;Middle&quot;)
+{
+breakpoint_x_coordinate_on_plot &lt;- exon_of_interest_start_coordinate + (breakpoint_info_data_frame$PercentIntoExon/100)*101
+}
+
+lines(c(breakpoint_x_coordinate_on_plot,breakpoint_x_coordinate_on_plot),c(8.35,9.4),col=mycolor,lwd=2)
+
+}
+</code></pre>
+
+<p>Now, run through each line from the fusion program and output the visualization.</p>
+
+<p>Here I make the size 12 inches wide x 8 inches high. But really any size is fine, although a fairly high width:height ratio will display better here.</p>
+
+<pre><code class="r">pdf(paste0(output_dir,&quot;/fusion_visualization.pdf&quot;),width=12,height=8)
+
+par(mfrow=c(1,2))
+par(mai = c(1, 0.5, 0.1, 0.1))
+
+#We only plot for rows in the fusion file that do not have descriptions &quot;healthy&quot;,&quot;readthrough&quot;, or &quot;banned&quot; by default.
+#If we want to plot all outputs, then do for i in 1:nrow(fusion_file_main_info).
+
+for(i in grep(&#39;healthy|readthrough|banned&#39;,as.vector(fusion_file_main_info$FusionDescription),perl=TRUE,invert=TRUE))
+{
+#Make plot for geneA with the appropriate number of exons (boxes).
+setup_fusion_plot(fusion_file_main_info_match_up_geneA$TotalExonNum[i])
+#Now, draw the breakpoint at the appropriate x coordinate.
+draw_breakpoint(fusion_file_main_info_match_up_geneA[i,c(&quot;ExonInOrBefore&quot;,&quot;StartMiddleEnd&quot;,&quot;PercentIntoExon&quot;)],&quot;orange&quot;)
+#Check if the transcript has a 5&#39; and 3&#39; UTR.
+#If so, also draw blue lines for the UTRs.
+if(fusion_file_main_info_match_up_geneA$Transcript[i] %in% rownames(fiveprime_utrs)){
+        draw_breakpoint(fiveprime_utrs[fusion_file_main_info_match_up_geneA$Transcript[i],c(&quot;ExonInOrBefore&quot;,&quot;StartMiddleEnd&quot;,&quot;PercentIntoExon&quot;)],&quot;blue&quot;)
+}
+if(fusion_file_main_info_match_up_geneA$Transcript[i] %in% rownames(threeprime_utrs)){
+        draw_breakpoint(threeprime_utrs[fusion_file_main_info_match_up_geneA$Transcript[i],c(&quot;ExonInOrBefore&quot;,&quot;StartMiddleEnd&quot;,&quot;PercentIntoExon&quot;)],&quot;blue&quot;)
+}
+#Plot was set up so the x coordinates go from 0 to 120*(ExonNum - 1)+200.
+#We set the x coordinates of all text at half this so it will be around the middle.
+plot_xmax &lt;- 120*(fusion_file_main_info_match_up_geneA$TotalExonNum[i] - 1)+200
+#Put text including the gene name, description, etc.
+text(plot_xmax/2,7,fusion_file_main_info_match_up_geneA$GeneA.GeneB[i])
+text(plot_xmax/2,6.5,fusion_file_main_info_match_up_geneA$FusionDescription[i],cex=0.75)
+text(plot_xmax/2,5.5,gsub(&#39;\\;&#39;,&#39;\n&#39;,fusion_file_main_info_match_up_geneA$Other.breakpoint.specific.info[i]),cex=0.75)
+text(plot_xmax/2,4.5,paste0(&quot;GeneA.transcript=&quot;,fusion_file_main_info_match_up_geneA$Transcript[i],&quot;\nGeneB.transcript=&quot;,fusion_file_main_info_match_up_geneB$Transcript[i]),cex=0.75)
+#Now, plot geneB.
+setup_fusion_plot(fusion_file_main_info_match_up_geneB$TotalExonNum[i])
+draw_breakpoint(fusion_file_main_info_match_up_geneB[i,c(&quot;ExonInOrBefore&quot;,&quot;StartMiddleEnd&quot;,&quot;PercentIntoExon&quot;)],&quot;orange&quot;)
+if(fusion_file_main_info_match_up_geneB$Transcript[i] %in% rownames(fiveprime_utrs)){
+        draw_breakpoint(fiveprime_utrs[fusion_file_main_info_match_up_geneB$Transcript[i],c(&quot;ExonInOrBefore&quot;,&quot;StartMiddleEnd&quot;,&quot;PercentIntoExon&quot;)],&quot;blue&quot;)
+}
+if(fusion_file_main_info_match_up_geneB$Transcript[i] %in% rownames(threeprime_utrs)){
+        draw_breakpoint(threeprime_utrs[fusion_file_main_info_match_up_geneB$Transcript[i],c(&quot;ExonInOrBefore&quot;,&quot;StartMiddleEnd&quot;,&quot;PercentIntoExon&quot;)],&quot;blue&quot;)
+}
+#Plot xmax wil be different for geneB if there are a different number of exons.
+#Currently all text is on the left side, but will likely change this later when add protein domains.
+plot_xmax &lt;- 120*(fusion_file_main_info_match_up_geneB$TotalExonNum[i] - 1)+200
+text(plot_xmax/2,7,&quot;Will add some text to geneB plot later on,\nprobably related to protein domains&quot;)
+}
+
+dev.off()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-34"/></p>
+
+</body>
+
+</html>

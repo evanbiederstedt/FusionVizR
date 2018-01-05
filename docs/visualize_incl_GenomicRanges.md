@@ -216,7 +216,8 @@ dim(transcript_info)
 ```
 
 ```r
-#Related - a simple two column file giving the total number of exons per transcript (should probably combine this with transcript_info).
+#Related - a simple two column file giving the total number of exons per transcript 
+#(should probably combine this with transcript_info).
 
 head(total_exons_per_transcript)
 ```

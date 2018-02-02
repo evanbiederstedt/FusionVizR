@@ -28,6 +28,7 @@ load(paste0(installation_dir_FusionVis,"/annotation/biomart_db_GRCh37_introns_as
 load(paste0(installation_dir_FusionVis,"/annotation/biomart_db_GRCh37_total_exons_per_transcript.Rdata"))
 load(paste0(installation_dir_FusionVis,"/annotation/biomart_db_GRCh37_rank_per_transcript.Rdata"))
 load(paste0(installation_dir_FusionVis,"/annotation/biomart_db_GRCh37_utrs_for_plotting.Rdata"))
+load(paste0(installation_dir_FusionVis,"/annotation/biomart_db_GRCh37_relative_exon_coords_for_all_annotated_pfam_ids.Rdata")) #This line added 02/02/18 to add loading protein domain information.
 }
 
 if(genome == "GRCh38")
@@ -190,8 +191,8 @@ exon_num_per_transcript_per_breakpoint_geneB <- merge(exon_num_per_transcript_pe
 exon_num_per_transcript_per_breakpoint_geneA <- exon_num_per_transcript_per_breakpoint_geneA[order(exon_num_per_transcript_per_breakpoint_geneA$coding,exon_num_per_transcript_per_breakpoint_geneA$cds_length,exon_num_per_transcript_per_breakpoint_geneA$transcript_length,decreasing=TRUE),]
 exon_num_per_transcript_per_breakpoint_geneB <- exon_num_per_transcript_per_breakpoint_geneB[order(exon_num_per_transcript_per_breakpoint_geneB$coding,exon_num_per_transcript_per_breakpoint_geneB$cds_length,exon_num_per_transcript_per_breakpoint_geneB$transcript_length,decreasing=TRUE),]
 
-intron_per_transcript_per_breakpoint_geneA <- merge(intron_per_transcript_per_breakpoint_geneA,data.frame(Breakpoint.name = geneA_breakpoints_overlapping_introns_only),by = "Breakpoint.name")
-intron_per_transcript_per_breakpoint_geneB <- merge(intron_per_transcript_per_breakpoint_geneB,data.frame(Breakpoint.name = geneB_breakpoints_overlapping_introns_only),by = "Breakpoint.name")
+intron_per_transcript_per_breakpoint_geneA <- merge(intron_per_transcript_per_breakpoint_geneA,data.frame(Breakpoint.name = geneA_breakpoints_overlapping_introns_only,stringsAsFactors=FALSE),by = "Breakpoint.name")
+intron_per_transcript_per_breakpoint_geneB <- merge(intron_per_transcript_per_breakpoint_geneB,data.frame(Breakpoint.name = geneB_breakpoints_overlapping_introns_only,stringsAsFactors=FALSE),by = "Breakpoint.name")
 
 intron_per_transcript_per_breakpoint_geneA <- merge(intron_per_transcript_per_breakpoint_geneA,transcript_info,by.x="TXNAME",by.y = "ensembl_transcript_id")
 intron_per_transcript_per_breakpoint_geneB <- merge(intron_per_transcript_per_breakpoint_geneB,transcript_info,by.x="TXNAME",by.y = "ensembl_transcript_id")
@@ -227,7 +228,8 @@ geneA_new_exon_start_and_end$EXONEND <- ifelse(exon_num_per_transcript_per_break
 
 geneB_new_exon_start_and_end <- data.frame(EXONSTART = exon_num_per_transcript_per_breakpoint_geneB$EXONSTART,EXONEND = exon_num_per_transcript_per_breakpoint_geneB$EXONEND)
 geneB_new_exon_start_and_end$EXONSTART <- ifelse(exon_num_per_transcript_per_breakpoint_geneB$EXONSTRAND == "+",exon_num_per_transcript_per_breakpoint_geneB$EXONSTART,exon_num_per_transcript_per_breakpoint_geneB$EXONEND)
-exon_num_per_transcript_per_breakpoint_geneB$EXONEND <- ifelse(exon_num_per_transcript_per_breakpoint_geneB$EXONSTRAND == "+",exon_num_per_transcript_per_breakpoint_geneB$EXONEND,exon_num_per_transcript_per_breakpoint_geneB$EXONSTART)
+#exon_num_per_transcript_per_breakpoint_geneB$EXONEND <- ifelse(exon_num_per_transcript_per_breakpoint_geneB$EXONSTRAND == "+",exon_num_per_transcript_per_breakpoint_geneB$EXONEND,exon_num_per_transcript_per_breakpoint_geneB$EXONSTART)
+geneB_new_exon_start_and_end$EXONEND <- ifelse(exon_num_per_transcript_per_breakpoint_geneB$EXONSTRAND == "+",exon_num_per_transcript_per_breakpoint_geneB$EXONEND,exon_num_per_transcript_per_breakpoint_geneB$EXONSTART) #This line added 02/02/18 to replace line just before it, which was a bug.
 
 #Now, determine start, middle, or end and percent into exon based on distance from start or end.
 
@@ -304,7 +306,9 @@ fusion_file_main_info_match_up_geneB$PercentIntoExon <- fusion_file_main_info_ma
 fusion_file_main_info_match_up_geneA <- fusion_file_main_info_match_up_geneA[match(paste0(fusion_file_main_info$GeneA.Breakpoint,"/",fusion_file_main_info$GeneB.Breakpoint),paste0(fusion_file_main_info_match_up_geneA$GeneA.Breakpoint,"/",fusion_file_main_info_match_up_geneA$GeneB.Breakpoint)),]
 fusion_file_main_info_match_up_geneB <- fusion_file_main_info_match_up_geneB[match(paste0(fusion_file_main_info$GeneA.Breakpoint,"/",fusion_file_main_info$GeneB.Breakpoint),paste0(fusion_file_main_info_match_up_geneB$GeneA.Breakpoint,"/",fusion_file_main_info_match_up_geneB$GeneB.Breakpoint)),]
 
-save(list=c("fusion_file","fusion_program","genome","output_dir","fusion_file_main_info_incompatible_annotation","fusion_file_main_info","fusion_file_main_info_match_up_geneA","fusion_file_main_info_match_up_geneB"),file=paste0(output_dir,"/overlaps_breakpoints_and_transcripts.Rdata"))
+#save(list=c("fusion_file","fusion_program","genome","output_dir","fusion_file_main_info_incompatible_annotation","fusion_file_main_info","fusion_file_main_info_match_up_geneA","fusion_file_main_info_match_up_geneB"),file=paste0(output_dir,"/overlaps_breakpoints_and_transcripts.Rdata"))
+#save(list=c("fusion_file","fusion_program","genome","output_dir","fusion_file_main_info_incompatible_annotation","fusion_file_main_info","fusion_file_main_info_match_up_geneA","fusion_file_main_info_match_up_geneB","exon_num_per_pfam_domain_start","exon_num_per_pfam_domain_end","utrs_data_frame_for_plotting"),
+#file=paste0(output_dir,"/overlaps_breakpoints_and_transcripts.Rdata"))
 
 #Final step in annotation is to match up UTR table.
 #utrs_data_frame_for_plotting contains 5' and 3' UTRs for all annotated transcripts.
@@ -321,98 +325,57 @@ rownames(threeprime_utrs) <- threeprime_utrs$Transcript
 fiveprime_utrs <- fiveprime_utrs[unique(c(fusion_file_main_info_match_up_geneA$Transcript,fusion_file_main_info_match_up_geneB$Transcript)),]
 threeprime_utrs <- threeprime_utrs[unique(c(fusion_file_main_info_match_up_geneA$Transcript,fusion_file_main_info_match_up_geneB$Transcript)),]
 
-#Here are the functions to make the initial plot (draw the boxes, make the plot the appropriate width) and to draw breakpoint lines.
-#Only thing is I no longer leave room for the coverage bars, so the y coordinates are different than they were. For example, the exons bars are now around y coordinates 8/9 rather than 6/7.
+#Now ready to save all objects.
+#This way if want to run just the plotting step after this, can load overlaps_breakpoints_and_transcripts.Rdata and have all the objects we need.
 
-setup_fusion_plot <- function(exon_num){
+save(list=c("fusion_file","fusion_program","genome","output_dir","fusion_file_main_info_incompatible_annotation","fusion_file_main_info","fusion_file_main_info_match_up_geneA","fusion_file_main_info_match_up_geneB",
+"exon_num_per_pfam_domain_start","exon_num_per_pfam_domain_end","fiveprime_utrs","threeprime_utrs"),
+file=paste0(output_dir,"/overlaps_breakpoints_and_transcripts.Rdata"))
 
-#Plot will go from y=1 to y=10, and x=0 to x=120*(exon_num - 1)+200.
-#The plot x-limit is based on the fact that the exons will be 101 bp, and the introns will be 20bp, plus a little extra room to put text, legends, etc.
-#Then we can use the standard coordinate system to place things. For example, if we want something near the top but not quite, and in the middle, setting the x coordinate as half the plot max,
-#and the y coordinate at 9.5 out of 10, should work well.
+#Commenting this out for now, but here are some lines to better understand the objects used for plotting.
 
-plot_xmax <- 120*(exon_num - 1)+200
+#dim(fusion_file_main_info)
+#dim(fusion_file_main_info_match_up_geneA)
+#dim(fusion_file_main_info_match_up_geneB)
 
-plot(0,pch='',ylab='',xlab='',xlim=c(0,plot_xmax),ylim=c(0,10),xaxt = 'n',yaxt = 'n',bty='n')
+#head(fusion_file_main_info,n=3)
+#head(fusion_file_main_info_match_up_geneA,n=3)
+#head(fusion_file_main_info_match_up_geneB,n=3)
 
-for(exon in 0:(exon_num - 1))
+#length(unique(fusion_file_main_info_match_up_geneA$Transcript))
+#length(unique(fusion_file_main_info_match_up_geneB$Transcript))
+#length(unique(c(fusion_file_main_info_match_up_geneA$Transcript,fusion_file_main_info_match_up_geneB$Transcript)))
+
+#dim(fiveprime_utrs)
+#dim(threeprime_utrs)
+
+#head(fiveprime_utrs,n=3)
+#head(threeprime_utrs,n=3)
+
+#dim(exon_num_per_pfam_domain_start)
+#dim(exon_num_per_pfam_domain_end)
+
+#head(exon_num_per_pfam_domain_start,n=3)
+#head(exon_num_per_pfam_domain_end,n=3)
+
+#Now, we source the functions from the script that contains the functions specifically for plotting.
+#See that script for more detailed comments.
+
+source('scripts/plot_fusions_incl_domains_after_process_and_match_up_to_annotation.R')
+
+#Run through each row that does not have descriptions we want to remove, and put the row number into the function final_plot_for_given_row_num.
+#As we do this, output to PDF.
+
+descriptions_to_remove <- c("readthrough","healthy","banned")
+
+row_numbers_to_plot <- grep(paste(descriptions_to_remove,collapse="|"),fusion_file_main_info$FusionDescription,perl=TRUE,invert=TRUE)
+
+pdf(paste0(output_dir,"/fusion_visualizations.pdf"),width=12,height=8)
+
+for(rownum in row_numbers_to_plot)
 {
-rect(120*exon,8.5,(120*exon)+100,9.25)
-end_this_exon <- (120*exon)+100
-if(exon < (exon_num - 1)){lines(c(end_this_exon,end_this_exon+20),c(8.875,8.875),type="l")}
-}
-
-}
-
-#We are calling this draw_breakpoint, but will actually use the same function to draw UTR lines.
-#In this iteration of the script I am going back to drawing fusion breakpoints in orange and UTR lines in blue.
-#Of course we will eventually want to draw UTRs as smaller boxes.
-
-draw_breakpoint <- function(breakpoint_info_data_frame,mycolor){
-
-exon_index <- breakpoint_info_data_frame$ExonInOrBefore - 1
-breakpoint_type <- breakpoint_info_data_frame$StartMiddleEnd
-
-exon_of_interest_start_coordinate <- 120*exon_index
-
-if(breakpoint_type == "Start"){breakpoint_x_coordinate_on_plot <- exon_of_interest_start_coordinate}
-if(breakpoint_type == "End"){breakpoint_x_coordinate_on_plot <- exon_of_interest_start_coordinate + 100}
-if(breakpoint_type == "Intronic"){breakpoint_x_coordinate_on_plot <- exon_of_interest_start_coordinate + 110}
-if(breakpoint_type == "Middle")
-{
-breakpoint_x_coordinate_on_plot <- exon_of_interest_start_coordinate + (breakpoint_info_data_frame$PercentIntoExon/100)*101
-}
-
-lines(c(breakpoint_x_coordinate_on_plot,breakpoint_x_coordinate_on_plot),c(8.35,9.4),col=mycolor,lwd=2)
-
-}
-
-#Run through each line and output the visualization.
-#Here I make the size 12 inches wide x 8 inches high. But really any size is fine, although a fairly high width:height ratio will display better here.
-
-pdf(paste0(output_dir,"/fusion_visualization.pdf"),width=12,height=8)
-
-par(mfrow=c(1,2))
-par(mai = c(1, 0.5, 0.1, 0.1))
-
-#We only plot for rows in the fusion file that do not have descriptions "healthy","readthrough", or "banned" by default.
-#If we want to plot all outputs, then do for i in 1:nrow(fusion_file_main_info).
-
-for(i in grep('healthy|readthrough|banned',as.vector(fusion_file_main_info$FusionDescription),perl=TRUE,invert=TRUE))
-{
-#Make plot for geneA with the appropriate number of exons (boxes).
-setup_fusion_plot(fusion_file_main_info_match_up_geneA$TotalExonNum[i])
-#Now, draw the breakpoint at the appropriate x coordinate.
-draw_breakpoint(fusion_file_main_info_match_up_geneA[i,c("ExonInOrBefore","StartMiddleEnd","PercentIntoExon")],"orange")
-#Check if the transcript has a 5' and 3' UTR.
-#If so, also draw blue lines for the UTRs.
-if(fusion_file_main_info_match_up_geneA$Transcript[i] %in% rownames(fiveprime_utrs)){
-	draw_breakpoint(fiveprime_utrs[fusion_file_main_info_match_up_geneA$Transcript[i],c("ExonInOrBefore","StartMiddleEnd","PercentIntoExon")],"blue")
-}
-if(fusion_file_main_info_match_up_geneA$Transcript[i] %in% rownames(threeprime_utrs)){
-	draw_breakpoint(threeprime_utrs[fusion_file_main_info_match_up_geneA$Transcript[i],c("ExonInOrBefore","StartMiddleEnd","PercentIntoExon")],"blue")
-}
-#Plot was set up so the x coordinates go from 0 to 120*(ExonNum - 1)+200.
-#We set the x coordinates of all text at half this so it will be around the middle.
-plot_xmax <- 120*(fusion_file_main_info_match_up_geneA$TotalExonNum[i] - 1)+200
-#Put text including the gene name, description, etc.
-text(plot_xmax/2,7,as.vector(fusion_file_main_info_match_up_geneA$GeneA.GeneB)[i])
-text(plot_xmax/2,6.5,as.vector(fusion_file_main_info_match_up_geneA$FusionDescription)[i],cex=0.75)
-text(plot_xmax/2,5.5,gsub('\\;','\n',as.vector(fusion_file_main_info_match_up_geneA$Other.breakpoint.specific.info)[i]),cex=0.75)
-text(plot_xmax/2,4.5,paste0("GeneA.transcript=",as.vector(fusion_file_main_info_match_up_geneA$Transcript)[i],"\nGeneB.transcript=",as.vector(fusion_file_main_info_match_up_geneB$Transcript)[i]),cex=0.75)
-#Now, repeat plotting for geneB.
-setup_fusion_plot(fusion_file_main_info_match_up_geneB$TotalExonNum[i])
-draw_breakpoint(fusion_file_main_info_match_up_geneB[i,c("ExonInOrBefore","StartMiddleEnd","PercentIntoExon")],"orange")
-if(fusion_file_main_info_match_up_geneB$Transcript[i] %in% rownames(fiveprime_utrs)){
-	draw_breakpoint(fiveprime_utrs[fusion_file_main_info_match_up_geneB$Transcript[i],c("ExonInOrBefore","StartMiddleEnd","PercentIntoExon")],"blue")
-}
-if(fusion_file_main_info_match_up_geneB$Transcript[i] %in% rownames(threeprime_utrs)){
-	draw_breakpoint(threeprime_utrs[fusion_file_main_info_match_up_geneB$Transcript[i],c("ExonInOrBefore","StartMiddleEnd","PercentIntoExon")],"blue")
-}
-#Plot xmax wil be different for geneB if there are a different number of exons.
-#Currently all text is on the left side, but will likely change this later when add protein domains.
-plot_xmax <- 120*(fusion_file_main_info_match_up_geneB$TotalExonNum[i] - 1)+200
-text(plot_xmax/2,7,"Will add some text to geneB plot later on,\nprobably related to protein domains")
+final_plot_for_given_row_num(rownum)
 }
 
 dev.off()
+

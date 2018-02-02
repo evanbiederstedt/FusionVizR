@@ -332,7 +332,7 @@ save(list=c("fusion_file","fusion_program","genome","output_dir","fusion_file_ma
 "exon_num_per_pfam_domain_start","exon_num_per_pfam_domain_end","fiveprime_utrs","threeprime_utrs"),
 file=paste0(output_dir,"/overlaps_breakpoints_and_transcripts.Rdata"))
 
-#Commenting this out for now, but here are some lines to better understand the objects used for plotting.
+#Un-comment these lines if you want to explore the objects used for plotting a bit more.
 
 #dim(fusion_file_main_info)
 #dim(fusion_file_main_info_match_up_geneA)
